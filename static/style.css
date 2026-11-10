@@ -1,0 +1,41 @@
+* { box-sizing: border-box; }
+:root { color-scheme: dark; --bg: #100f18; --panel: #191725; --panel2: #242132; --text: #f4f0ff; --muted: #aaa4bd; --accent: #b6a0ff; --line: #302b42; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at top, #28203d 0, var(--bg) 48%); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { width: min(900px, 100%); min-height: 100dvh; margin: 0 auto; display: flex; flex-direction: column; padding: 0 16px env(safe-area-inset-bottom); }
+.topbar { display:flex; align-items:center; gap:12px; padding:16px 0; border-bottom:1px solid var(--line); }
+.avatar { width:46px; height:46px; border-radius:16px; display:grid; place-items:center; background:linear-gradient(135deg,#c5b2ff,#7555bc); color:#171124; font-weight:800; font-size:24px; }
+.brand { flex:1; } h1 { margin:0; font-size:20px; letter-spacing:.2px; } .brand p { margin:1px 0 0; color:var(--muted); font-size:12px; }
+.icon-button { border:1px solid var(--line); color:var(--text); background:var(--panel); border-radius:12px; padding:9px 12px; font-size:20px; }
+.chat { flex:1; display:flex; flex-direction:column; gap:14px; padding:24px 0; overflow-y:auto; }
+.welcome { text-align:center; margin:auto auto 24px; max-width:380px; color:var(--muted); } .welcome h2 { color:var(--text); font-size:23px; margin:12px 0 5px; } .welcome p { margin:0; }
+.welcome-orb { width:56px; height:56px; display:grid; place-items:center; margin:auto; border-radius:20px; background:#2c2441; color:var(--accent); font-size:30px; }
+.message { max-width:88%; padding:12px 15px; border-radius:18px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.message.user { align-self:flex-end; background:#6c55a7; color:white; border-bottom-right-radius:5px; }
+.message.ai { align-self:flex-start; background:var(--panel2); border:1px solid var(--line); border-bottom-left-radius:5px; }
+.message.error { border-color:#a94e68; color:#ffdce5; }
+.suggestions { display:flex; gap:8px; overflow-x:auto; padding:0 0 12px; }
+.suggestion { flex:0 0 auto; border:1px solid var(--line); border-radius:999px; padding:9px 12px; background:transparent; color:var(--muted); font-size:12px; }
+.composer { display:flex; align-items:flex-end; gap:10px; background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:9px; margin-bottom:10px; }
+textarea { resize:none; flex:1; max-height:150px; border:0; outline:0; background:transparent; color:var(--text); font:inherit; padding:8px; }
+#send { width:42px; height:42px; border:0; border-radius:15px; background:var(--accent); color:#1b142a; font-size:20px; font-weight:bold; }
+#send:disabled { opacity:.45; } .footnote { text-align:center; color:#77718c; font-size:11px; margin:0 0 12px; }
+@media (min-width:700px) { .app { min-height: min(100dvh, 1000px); } .chat { min-height:400px; } .message { max-width:75%; } }
+
+
+.emotion-status { font-size: 12px !important; opacity: .82; margin-top: 3px !important; }
+.attach { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 15px; color: var(--accent); font-size: 27px; cursor: pointer; }
+.attach input { display: none; }
+.file-name { color: var(--muted); font-size: 12px; margin: 0 4px 8px; overflow-wrap: anywhere; }
+.login-body { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login-card { width: min(100%, 390px); background: var(--panel, #1b1928); border: 1px solid var(--line); border-radius: 26px; padding: 28px; box-shadow: 0 18px 60px #0003; }
+.login-avatar { margin-bottom: 14px; }
+.login-card h1 { margin: 0 0 8px; }
+.login-subtitle { color: var(--muted); margin: 0 0 22px; }
+.login-form { display: grid; gap: 12px; }
+.login-form label { font-size: 14px; color: var(--muted); }
+.login-form input { min-width: 0; padding: 14px; border-radius: 12px; border: 1px solid var(--line); background: #11101a; color: inherit; font: inherit; }
+.login-form button { padding: 13px; border: 0; border-radius: 12px; background: var(--accent); color: white; font: inherit; cursor: pointer; }
+.login-error { color: #ffb7c5; background: #7c294533; padding: 10px; border-radius: 10px; }
+
+.game-link { flex: 0 0 auto; text-decoration:none; border:1px solid var(--line); color:var(--text); background:var(--panel); border-radius:12px; padding:9px 11px; font-size:13px; white-space:nowrap; }
+.game-link:hover { border-color:var(--accent); }

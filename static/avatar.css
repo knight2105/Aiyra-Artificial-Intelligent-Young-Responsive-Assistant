@@ -1,0 +1,129 @@
+body.avatar-mode { --accent:#c4a8ff; background:radial-gradient(ellipse at 50% 12%,#33264f 0,#15121f 46%,#0c0b13 100%); }
+.avatar-app { width:min(760px,100%); }
+.back-link { flex:0 0 40px; height:40px; display:grid; place-items:center; border:1px solid var(--line); border-radius:13px; text-decoration:none; color:var(--text); background:var(--panel); font-size:24px; }
+.mode-tag { font-size:11px; font-weight:500; color:#d4c4ff; border:1px solid #51416f; border-radius:999px; padding:3px 8px; vertical-align:middle; white-space:nowrap; }
+.avatar-stage { min-height:350px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px 0 0; position:relative; overflow:hidden; }
+.avatar-halo { position:absolute; width:250px; height:250px; top:32px; border-radius:50%; background:radial-gradient(circle,#9d7be62b 0,#8e6bcb14 48%,transparent 72%); border:1px solid #c3a9ff12; box-shadow:0 0 70px #9872df14; }
+.aiyra-avatar { width:min(270px,72vw); height:270px; position:relative; z-index:1; filter:drop-shadow(0 16px 22px #0004); animation:float 4.8s ease-in-out infinite; }
+.character { width:100%; height:100%; overflow:visible; }
+.eye { transform-box:fill-box; transform-origin:center; animation:blink 5.2s infinite; }
+.eye-right { animation-delay:.06s; }
+.mouth-speaking { opacity:0; transform-origin:center; }
+.mouth-happy { opacity:0; }
+.aiyra-avatar[data-emotion="feliz"] .mouth-neutral,
+.aiyra-avatar[data-emotion="empolgada"] .mouth-neutral { opacity:0; }
+.aiyra-avatar[data-emotion="feliz"] .mouth-happy,
+.aiyra-avatar[data-emotion="empolgada"] .mouth-happy { opacity:1; }
+.aiyra-avatar[data-emotion="pensativa"] .eye-left { transform:rotate(-9deg) translateY(2px); }
+.aiyra-avatar[data-emotion="tímida"] .eye { transform:scaleY(.78); }
+.aiyra-avatar[data-emotion="curiosa"] .eye { transform:translateY(-2px) scale(1.04); }
+.aiyra-avatar.is-speaking .mouth-neutral,.aiyra-avatar.is-speaking .mouth-happy { opacity:0; }
+.aiyra-avatar.is-speaking .mouth-speaking { opacity:1; animation:talk .22s ease-in-out infinite alternate; }
+.avatar-spark { position:absolute; color:#e2d6ff; text-shadow:0 0 16px #b9a0ff; animation:sparkle 3s ease-in-out infinite; }
+.spark-one { right:10px; top:70px; font-size:26px; }.spark-two { left:7px; top:130px; font-size:21px; animation-delay:1s; }
+.avatar-caption { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:2px; margin-top:-3px; }
+.avatar-caption strong { font-size:17px; letter-spacing:.08em; }.avatar-caption span { font-size:12px; color:var(--muted); text-align:center; }
+.avatar-app .chat { flex:0 1 auto; min-height:130px; max-height:330px; width:100%; padding:18px 0; }
+.avatar-app .welcome { margin:0 auto 12px; }.avatar-app .welcome h2 { font-size:20px; }.avatar-app .message.ai { border-radius:18px 18px 18px 5px; }
+.avatar-app .suggestions { padding-top:2px; }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+@keyframes blink { 0%,43%,47%,100% { transform:scaleY(1); } 45% { transform:scaleY(.08); } }
+@keyframes talk { from { transform:scaleY(.7) scaleX(.8); } to { transform:scaleY(1.2) scaleX(1.05); } }
+@keyframes sparkle { 0%,100% { opacity:.35; transform:scale(.8) rotate(-8deg); } 50% { opacity:1; transform:scale(1.12) rotate(10deg); } }
+@media(max-width:480px) { .avatar-stage { min-height:305px; }.aiyra-avatar { width:230px;height:238px; }.avatar-halo { width:220px;height:220px;top:24px; }.topbar { gap:8px; }.mode-tag { display:inline-block; margin-top:3px; } }
+@media(prefers-reduced-motion:reduce) { .aiyra-avatar,.eye,.avatar-spark,.mouth-speaking { animation:none !important; } }
+
+
+/* Layout lateral: avatar como companheira virtual e conversa ao lado */
+.avatar-app {
+  width: min(1380px, 100%);
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(270px, 0.82fr) minmax(0, 1.35fr);
+  grid-template-areas:
+    "header header"
+    "avatar chat"
+    "avatar suggestions"
+    "avatar composer"
+    "avatar filename"
+    "avatar voice"
+    "avatar footnote";
+  column-gap: clamp(22px, 3vw, 42px);
+  row-gap: 0;
+  align-content: start;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+.avatar-app > .topbar { grid-area: header; min-width: 0; }
+.avatar-app > .avatar-stage {
+  grid-area: avatar;
+  align-self: stretch;
+  position: sticky;
+  top: 18px;
+  min-height: 560px;
+  height: calc(100dvh - 125px);
+  max-height: 820px;
+  padding: 22px 10px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(160deg, #211b32dd, #12111bdd);
+}
+.avatar-app > .avatar-stage .avatar-halo { top: calc(50% - 170px); }
+.avatar-app > .avatar-stage .aiyra-avatar { width: min(100%, 340px); height: auto; aspect-ratio: 320 / 330; }
+.avatar-app > .avatar-stage .avatar-caption { margin-top: 12px; }
+.avatar-app > #chat {
+  grid-area: chat;
+  width: 100%;
+  min-width: 0;
+  min-height: 260px;
+  max-height: min(52vh, 560px);
+  overflow-y: auto;
+  padding: 20px 6px 20px 0;
+}
+.avatar-app > .suggestions { grid-area: suggestions; min-width: 0; }
+.avatar-app > #form { grid-area: composer; min-width: 0; }
+.avatar-app > #file-name { grid-area: filename; }
+.avatar-app > #voice-status { grid-area: voice; }
+.avatar-app > .footnote { grid-area: footnote; }
+.avatar-app .welcome { margin: 12px 0 24px; max-width: 100%; text-align: left; }
+.avatar-app .welcome h2 { font-size: 22px; }
+.avatar-app .message { max-width: 92%; }
+
+@media (max-width: 760px) {
+  .avatar-app {
+    width: min(100%, 700px);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .avatar-app > .avatar-stage {
+    position: relative;
+    top: auto;
+    min-height: 250px;
+    height: auto;
+    max-height: none;
+    padding: 10px 0 14px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .avatar-app > .avatar-stage .avatar-halo { top: 18px; }
+  .avatar-app > .avatar-stage .aiyra-avatar { width: 220px; height: 228px; }
+  .avatar-app > .avatar-stage .avatar-caption { margin-top: -2px; }
+  .avatar-app > #chat { min-height: 220px; max-height: 42vh; padding: 14px 0; }
+  .avatar-app .welcome { text-align: center; margin: 0 auto 16px; }
+  .avatar-app .message { max-width: 94%; }
+}
+@media (max-width: 420px) {
+  .avatar-app > .topbar { gap: 7px; }
+  .avatar-app .mode-tag { white-space: normal; }
+  .avatar-app > .avatar-stage { min-height: 230px; }
+  .avatar-app > .avatar-stage .aiyra-avatar { width: 200px; height: 207px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar-app > .avatar-stage .aiyra-avatar,
+  .avatar-app > .avatar-stage .eye,
+  .avatar-app > .avatar-stage .avatar-spark,
+  .avatar-app > .avatar-stage .mouth-speaking { animation: none !important; }
+}

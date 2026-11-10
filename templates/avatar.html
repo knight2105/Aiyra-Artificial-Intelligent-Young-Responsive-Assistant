@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151321">
+  <title>Aiyra — modo avatar</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/avatar.css">
+</head>
+<body class="avatar-mode">
+  <main class="app avatar-app">
+    <header class="topbar">
+      <a class="back-link" href="/" title="Voltar à pesquisa padrão" aria-label="Voltar à pesquisa padrão">←</a>
+      <div class="brand">
+        <h1>Aiyra <span class="mode-tag">modo avatar</span></h1>
+        <p id="status">Verificando conexão…</p>
+        <p id="emotion-status" class="emotion-status">Estado: neutra</p>
+      </div>
+      <a class="game-link" href="/jogos/21" title="Jogar 21">♠ Jogos</a>
+      <form method="post" action="/logout"><button class="icon-button" title="Sair da conta" aria-label="Sair da conta">⇥</button></form>
+    </header>
+    <section class="avatar-stage" aria-label="Avatar da Aiyra">
+      <div class="avatar-halo"></div>
+      <div id="aiyra-avatar" class="aiyra-avatar" data-emotion="neutra" role="img" aria-label="Avatar anime da Aiyra">
+        <svg class="character" viewBox="0 0 320 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8c8ff"/><stop offset=".52" stop-color="#9278d9"/><stop offset="1" stop-color="#51417f"/></linearGradient>
+            <linearGradient id="skin" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#ffe6dc"/><stop offset="1" stop-color="#eeb8b7"/></linearGradient>
+            <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b8a6ff"/><stop offset="1" stop-color="#6f5aa8"/></linearGradient>
+          </defs>
+          <!-- shoulders and clothes -->
+          <path d="M67 318 Q75 256 119 246 L201 246 Q246 259 254 318Z" fill="url(#coat)" stroke="#e0d5ff" stroke-width="2"/>
+          <path d="M133 245 L160 280 L187 245 L202 318 L118 318Z" fill="#f5edff"/>
+          <path d="M145 270 L160 287 L175 270 L169 318 L151 318Z" fill="#9d86de"/>
+          <!-- hair behind -->
+          <path d="M82 135 Q60 45 130 25 Q201 -2 238 62 Q269 108 236 218 L214 253 L96 241 Q68 195 82 135Z" fill="url(#hair)" stroke="#443566" stroke-width="3"/>
+          <path d="M95 128 Q65 182 102 242 L122 253 L118 169Z" fill="#8b72ce"/>
+          <path d="M219 122 Q255 178 216 244 L196 256 L204 167Z" fill="#6b579f"/>
+          <!-- neck -->
+          <path d="M137 215 L137 253 Q160 276 183 252 L183 213Z" fill="url(#skin)"/>
+          <!-- face -->
+          <path d="M105 104 Q108 55 160 55 Q216 55 215 112 L207 174 Q198 218 160 230 Q122 218 113 174Z" fill="url(#skin)" stroke="#704f72" stroke-width="2.5"/>
+          <!-- bangs -->
+          <path d="M91 126 Q82 60 126 39 Q174 12 218 56 Q239 78 224 129 L206 103 L194 71 Q168 105 133 103 L112 137 L108 105Z" fill="url(#hair)" stroke="#443566" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M131 45 Q119 79 112 119 M169 34 Q177 72 163 99 M204 54 Q211 78 215 100" fill="none" stroke="#e7ddff" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+          <!-- ears -->
+          <ellipse cx="108" cy="151" rx="10" ry="17" fill="#f4c9c2"/><ellipse cx="212" cy="151" rx="10" ry="17" fill="#f4c9c2"/>
+          <!-- eyes -->
+          <g class="eye eye-left"><path d="M119 145 Q137 129 153 145 Q138 166 122 151Z" fill="#fff9ff"/><ellipse cx="137" cy="148" rx="8" ry="12" fill="#6b56a8"/><ellipse cx="138" cy="148" rx="4" ry="8" fill="#27203e"/><circle cx="140" cy="143" r="3" fill="white"/><path d="M117 143 Q137 128 155 143" fill="none" stroke="#49345f" stroke-width="4" stroke-linecap="round"/></g>
+          <g class="eye eye-right"><path d="M167 145 Q185 129 201 145 Q186 166 170 151Z" fill="#fff9ff"/><ellipse cx="184" cy="148" rx="8" ry="12" fill="#6b56a8"/><ellipse cx="184" cy="148" rx="4" ry="8" fill="#27203e"/><circle cx="187" cy="143" r="3" fill="white"/><path d="M165 143 Q185 128 203 143" fill="none" stroke="#49345f" stroke-width="4" stroke-linecap="round"/></g>
+          <!-- blush, nose and mouth -->
+          <ellipse cx="122" cy="171" rx="11" ry="5" fill="#ed929e" opacity=".42"/><ellipse cx="198" cy="171" rx="11" ry="5" fill="#ed929e" opacity=".42"/>
+          <path d="M158 157 l-3 11 6 1" fill="none" stroke="#c68d94" stroke-width="2" stroke-linecap="round"/>
+          <path class="mouth mouth-neutral" d="M146 190 Q160 197 174 190" fill="none" stroke="#a94e72" stroke-width="3" stroke-linecap="round"/>
+          <path class="mouth mouth-happy" d="M145 188 Q160 211 175 188 Q160 197 145 188Z" fill="#a94e72"/>
+          <ellipse class="mouth mouth-speaking" cx="160" cy="195" rx="8" ry="11" fill="#8f3f65"/>
+          <!-- hair ornaments -->
+          <path d="M95 91 Q72 80 75 62 Q98 66 107 82Z" fill="#f5d9ff" stroke="#6e579e" stroke-width="2"/>
+          <circle cx="91" cy="79" r="5" fill="#fff4ff"/>
+          <path d="M218 87 Q240 72 244 57 Q222 61 210 78Z" fill="#f5d9ff" stroke="#6e579e" stroke-width="2"/>
+          <circle cx="229" cy="73" r="5" fill="#fff4ff"/>
+          <!-- collar and pendant -->
+          <path d="M126 247 L145 266 L160 257 L175 266 L194 247" fill="none" stroke="#e6dcff" stroke-width="5" stroke-linecap="round"/>
+          <path d="M160 263 l7 9 -7 10 -7 -10Z" fill="#f7d8ff" stroke="#6e579e" stroke-width="2"/>
+        </svg>
+        <div class="avatar-spark spark-one">✦</div><div class="avatar-spark spark-two">✧</div>
+      </div>
+      <div class="avatar-caption"><strong id="avatar-name">Aiyra</strong><span id="avatar-mood">Estou aqui com você.</span></div>
+    </section>
+    <section id="chat" class="chat" aria-live="polite">
+      <div class="welcome"><h2>Oi! Vamos conversar?</h2><p>Posso pesquisar na internet, ajudar nos seus projetos ou criar histórias com você.</p></div>
+    </section>
+    <div class="suggestions">
+      <button class="suggestion">Me ajude com um projeto</button>
+      <button class="suggestion">Quero criar uma história</button>
+      <button class="suggestion">Pesquise as novidades de IA</button>
+    </div>
+    <form id="form" class="composer" enctype="multipart/form-data">
+      <label class="attach" title="Anexar arquivo" aria-label="Anexar arquivo">＋<input id="file" type="file" accept=".txt,.md,.csv,.json,.py,.html,.css,.js,.xml,.yaml,.yml,.log,.pdf,.docx,.xlsx,.png,.jpg,.jpeg,.webp,.bmp,.tif,.tiff"></label>
+      <button id="mic" class="icon-button mic-button" type="button" title="Gravar comando de voz" aria-label="Gravar comando de voz" aria-pressed="false">🎙</button>
+      <textarea id="message" rows="1" maxlength="4000" placeholder="Converse com a Aiyra…" aria-label="Mensagem"></textarea>
+      <button id="send" type="submit" aria-label="Enviar mensagem">➤</button>
+    </form>
+    <p id="file-name" class="file-name"></p><p id="voice-status" class="file-name" role="status" aria-live="polite"></p>
+    <p class="footnote">Aiyra privada · avatar animado localmente · pesquisa e memória compartilhadas</p>
+  </main>
+  <script src="/static/app.js"></script>
+  <script src="/static/avatar.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151321">
+  <title>Aiyra — sua assistente</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="avatar">A</div>
+      <div class="brand">
+        <h1>Aiyra</h1>
+        <p id="status">Verificando conexão…</p>
+        <p id="emotion-status" class="emotion-status">Estado: neutra</p>
+      </div>
+      <a class="game-link" href="/avatar" title="Modo avatar">✦ Avatar</a>
+      <a class="game-link" href="/jogos/21" title="Jogar 21">♠ Jogos</a>
+      <form method="post" action="/logout"><button class="icon-button" title="Sair da conta" aria-label="Sair da conta">⇥</button></form>
+    </header>
+    <section id="chat" class="chat" aria-live="polite">
+      <div class="welcome">
+        <div class="welcome-orb">✦</div>
+        <h2>Oi! Eu sou a Aiyra.</h2>
+        <p>Podemos conversar, organizar projetos ou criar histórias juntos.</p>
+      </div>
+    </section>
+    <div class="suggestions">
+      <button class="suggestion">Me ajude com um projeto</button>
+      <button class="suggestion">Quero criar uma história</button>
+      <button class="suggestion">Pesquise as novidades de IA</button>
+    </div>
+    <form id="form" class="composer" enctype="multipart/form-data">
+      <label class="attach" title="Anexar arquivo" aria-label="Anexar arquivo">＋<input id="file" type="file" accept=".txt,.md,.csv,.json,.py,.html,.css,.js,.xml,.yaml,.yml,.log,.pdf,.docx,.xlsx,.png,.jpg,.jpeg,.webp,.bmp,.tif,.tiff"></label>
+      <button id="mic" class="icon-button mic-button" type="button" title="Gravar comando de voz" aria-label="Gravar comando de voz" aria-pressed="false">🎙</button>
+      <textarea id="message" rows="1" maxlength="4000" placeholder="Converse com a Aiyra…" aria-label="Mensagem"></textarea>
+      <button id="send" type="submit" aria-label="Enviar mensagem">➤</button>
+    </form>
+    <p id="file-name" class="file-name"></p>
+    <p id="voice-status" class="file-name" role="status" aria-live="polite"></p>
+    <p class="footnote">Aiyra privada · arquivos processados no computador</p>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

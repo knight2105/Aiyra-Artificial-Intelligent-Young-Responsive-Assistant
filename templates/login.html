@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151321">
+  <title>Entrar — Aiyra</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <div class="avatar login-avatar">A</div>
+    <h1>Aiyra</h1>
+    <p class="login-subtitle">Entre para continuar nossa conversa.</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <p class="login-error">{{ message }}</p>
+      {% endfor %}
+    {% endwith %}
+    <form method="post" action="/login" class="login-form">
+      <label for="password">Senha de acesso</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+      <button type="submit">Entrar</button>
+    </form>
+    <p class="footnote">Acesso privado · servidor local</p>
+  </main>
+</body>
+</html>
